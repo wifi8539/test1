@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Test3 {
+	public int RD() {
+		Random random = new Random();
+		int n = random.nextInt(10);
+		if (n == 1 || n == 3 || n == 5 || n == 7 || n == 9) {
+			//13579产生负数
+			String str = "-" + (random.nextInt(900) + 100);// 加个负号
+			int a = Integer.parseInt(str);
+			return a;
+		} else {
+			//02468产生正数
+			int a = random.nextInt(900) + 100;
+			return a;
+		}
+	}
+
+	public void MaxMinAve(int[] numbers) {
+		float max = numbers[0], min = numbers[0], ave = 0, sum = numbers[0];
+		for (int i = 1; i < numbers.length; i++) {
+			if (numbers[i] > max) {
+				max = numbers[i];
+			}
+			if (numbers[i] < min) {
+				min = numbers[i];
+			}
+			sum += numbers[i];
+		}
+		ave = sum / numbers.length;
+		System.out.println("最大值：" + (int) max);
+		System.out.println("最小值：" + (int) min);
+		System.out.println("平均值：" + ave);
+	}
+
+	public static void main(String[] args) {
+		Test3 t = new Test3();
+		int[] num = new int[10];
+		System.out.print("随机生成10个三位整数：");
+		for (int i = 0; i < num.length; i++) {
+			num[i] = t.RD();
+			System.out.print(num[i]+" ");
+		}
+		System.out.println();
+		t.MaxMinAve(num);
+	}
+
+}
